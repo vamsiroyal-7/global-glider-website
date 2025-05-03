@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Container for Form */
+    .container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Header Styling */
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #2a5298;
+      margin-bottom: 30px;
+    }
+
+    /* Form Styling */
+    form {
+      display: grid;
+      gap: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, textarea {
+      padding: 14px;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 5px rgba(42, 82, 152, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    /* Button Styling */
+    button {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      color: white;
+      background-color: #2a5298;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1e3c72;
+      transform: translateY(-2px);
+    }
+
+    /* Small Screen Adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      form {
+        gap: 15px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 12px 25px;
+      }
+    }
+
+    /* Footer Styling (optional for added professionalism) */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+
+    <form action="https://formspree.io/f/xrbqpyor" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Optional Footer -->
+  <footer>
+    <p>&copy; 2025 Global Glider Consultancy. All rights reserved.</p>
+  </footer>
+</body>
+</html>
