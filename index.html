@@ -371,3 +371,11 @@
     </a>
   </p>
 </footer>
+<div id="whatsapp-link"></div>
+<script>
+  fetch('whatsapp.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('whatsapp-link').innerHTML = data;
+    });
+</script>
