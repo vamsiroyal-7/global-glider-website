@@ -24,3 +24,6 @@ This website is deployed using **Cloudflare Pages** and auto-updates on every pu
 ## License
 
 This project is for personal/organizational use by Global Glider Consultancy.
+
+## FAQ
+Faqs for users
