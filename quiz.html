@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Preference Quiz</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
+      background: linear-gradient(to right, #8EC5FC, #E0C3FC); /* soft blue-purple gradient */
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2.5rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #4b0082;
+    }
+
+    p {
+      font-size: 20px;
+      margin: 12px 0;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input {
+      margin: 8px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #6a5acd;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #483d8b;
+    }
+
+    #quizResult {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌍 Which Country is Right for You?</h2>
+    <form id="quizForm">
+      <p>1. Preferred climate?</p>
+      <input type="radio" name="climate" value="warm" id="warm"><label for="warm">Warm</label><br>
+      <input type="radio" name="climate" value="cold" id="cold"><label for="cold">Cold</label><br>
+
+      <p>2. Budget level?</p>
+      <input type="radio" name="budget" value="low" id="low"><label for="low">Low</label><br>
+      <input type="radio" name="budget" value="medium" id="medium"><label for="medium">Medium</label><br>
+      <input type="radio" name="budget" value="high" id="high"><label for="high">High</label><br>
+
+      <p>3. Interest in part-time work?</p>
+      <input type="radio" name="work" value="yes" id="yes"><label for="yes">Yes</label><br>
+      <input type="radio" name="work" value="no" id="no"><label for="no">No</label><br>
+
+      <button type="button" onclick="evaluateQuiz()">Submit</button>
+    </form>
+
+    <div id="quizResult"></div>
+
+    <footer>Powered by Global Glider Consultancy</footer>
+  </div>
+
+  <script>
+    function evaluateQuiz() {
+      const climate = document.querySelector('input[name="climate"]:checked')?.value;
+      const budget = document.querySelector('input[name="budget"]:checked')?.value;
+      const work = document.querySelector('input[name="work"]:checked')?.value;
+
+      if (!climate || !budget || !work) {
+        document.getElementById("quizResult").innerText = "⚠️ Please answer all questions.";
+        return;
+      }
+
+      let country = "";
+
+      if (budget === "low" && work === "yes") {
+        country = "🇨🇦 Canada";
+      } else if (budget === "medium" && climate === "cold") {
+        country = "🇬🇧 United Kingdom";
+      } else if (budget === "high" && climate === "warm") {
+        country = "🇺🇸 USA";
+      } else if (budget === "medium" && work === "yes") {
+        country = "🇬🇧 United Kingdom";
+      } else if (budget === "low" && climate === "cold") {
+        country = "🇨🇦 Canada";
+      } else {
+        country = "🌐 Canada or UK";
+      }
+
+      document.getElementById("quizResult").innerText =
+        `✅ Based on your preferences, ${country} might be a great option for your studies abroad.`;
+    }
+  </script>
+</body>
+</html>
