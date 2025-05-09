@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Zone Fun – Global Glider</title>
+  <style>
+    body {
+      font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(to right, #e8efff, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+      padding-top: 40px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #1a1a1a;
+    }
+
+    select {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .time-block {
+      margin: 20px 0;
+      background: #f4f6fa;
+      padding: 20px;
+      border-radius: 18px;
+      transition: all 0.2s;
+    }
+
+    .time-block:hover {
+      background: #e7f0ff;
+    }
+
+    .label {
+      font-weight: bold;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .clock {
+      font-size: 24px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .activity {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .clock {
+        font-size: 20px;
+      }
+
+      .activity {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌏 India vs The World – What Are They Doing Now?</h2>
+    <select id="countrySelect">
+      <option value="America/New_York" data-label="🇺🇸 USA (New York)">🇺🇸 USA (New York)</option>
+      <option value="Europe/London" data-label="🇬🇧 UK">🇬🇧 UK</option>
+      <option value="Europe/Berlin" data-label="🇩🇪 Germany">🇩🇪 Germany</option>
+      <option value="Asia/Tokyo" data-label="🇯🇵 Japan">🇯🇵 Japan</option>
+      <option value="Australia/Sydney" data-label="🇦🇺 Australia (Sydney)">🇦🇺 Australia</option>
+      <option value="Asia/Dubai" data-label="🇦🇪 Dubai">🇦🇪 Dubai</option>
+    </select>
+
+    <div class="time-block">
+      <div class="label">🇮🇳 India (IST)</div>
+      <div id="indiaTime" class="clock">--:--</div>
+      <div id="indiaActivity" class="activity">...</div>
+    </div>
+
+    <div class="time-block">
+      <div class="label" id="selectedCountryLabel">🇺🇸 USA (New York)</div>
+      <div id="countryTime" class="clock">--:--</div>
+      <div id="countryActivity" class="activity">...</div>
+    </div>
+
+    <footer>Made with ❤️ by Global Glider Consultancy</footer>
+  </div>
+
+  <script>
+    const countrySelect = document.getElementById("countrySelect");
+    const countryLabel = document.getElementById("selectedCountryLabel");
+
+    function formatTime(date) {
+      return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    }
+
+    function getActivity(hour) {
+      if (hour >= 5 && hour < 8) return "☀️ Early morning jog or meditation";
+      if (hour >= 8 && hour < 11) return "🍳 Having breakfast or heading to class";
+      if (hour >= 11 && hour < 14) return "📚 Midday lectures or study sessions";
+      if (hour >= 14 && hour < 17) return "🧑‍💻 Working on projects or chilling";
+      if (hour >= 17 && hour < 20) return "☕ Evening tea or social catch-up";
+      if (hour >= 20 && hour < 22) return "🍽️ Dinner and relaxation";
+      if (hour >= 22 || hour < 2) return "🌙 Winding down or Netflix";
+      return "😴 Probably sleeping...";
+    }
+
+    function updateTime() {
+      const indiaTime = new Date().toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+      });
+      const indiaDate = new Date(indiaTime);
+      document.getElementById("indiaTime").textContent = formatTime(indiaDate);
+      document.getElementById("indiaActivity").textContent = getActivity(indiaDate.getHours());
+
+      const selectedZone = countrySelect.value;
+      const label = countrySelect.options[countrySelect.selectedIndex].dataset.label;
+      countryLabel.textContent = label;
+
+      const foreignTime = new Date().toLocaleString("en-US", {
+        timeZone: selectedZone,
+      });
+      const foreignDate = new Date(foreignTime);
+      document.getElementById("countryTime").textContent = formatTime(foreignDate);
+      document.getElementById("countryActivity").textContent = getActivity(foreignDate.getHours());
+    }
+
+    countrySelect.addEventListener("change", updateTime);
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
