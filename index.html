@@ -119,6 +119,31 @@
       font-size: 1.15rem;
       color: #333;
     }
+    /* ===== Testimonials ===== */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(30, 60, 114, 0.1);
+      border-left: 4px solid var(--accent-gold);
+    }
+    
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial span {
+      font-weight: 600;
+      color: var(--secondary-blue);
+    }
 
     .services {
       display: flex;
@@ -326,6 +351,25 @@
         <div class="step-number">5</div>
         <strong>Pre-Departure</strong>
         <p>Guidance for travel, accommodation, and settling abroad.</p>
+      </div>
+    </div>
+  </section>
+
+   <!-- Testimonials -->
+   <section id="testimonials">
+    <h2>Student Success Stories</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <p>"Global Glider's SOP workshop helped me stand out in my CS applications. I got into UT Austin with a $15,000 scholarship!"</p>
+        <span>— Rohan K., MS in Computer Science</span>
+      </div>
+      <div class="testimonial">
+        <p>"The visa mock interviews were incredibly realistic. I aced my actual F1 interview on the first attempt!"</p>
+        <span>— Priya M., MBA at NYU Stern</span>
+      </div>
+      <div class="testimonial">
+        <p>"They found programs I never knew existed. Now I'm studying Renewable Energy in Germany tuition-free!"</p>
+        <span>— Arjun S., MSc in Sustainability</span>
       </div>
     </div>
   </section>
